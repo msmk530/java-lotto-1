@@ -4,7 +4,8 @@ import view.InputView;
 
 public class LottoGame {
     public void run() {
-        int purchasePrice = InputView.inputPurchasePrice();
+        int countOfPurchaseLotto = InputView.inputPurchasePrice();
+        int countOfManualLotto = InputView.inputCountOfManualLotto(countOfPurchaseLotto);
 
     }
 }
