@@ -5,6 +5,6 @@ import view.InputView;
 public class LottoGame {
     public void run() {
         int purchasePrice = InputView.inputPurchasePrice();
-        System.out.println(purchasePrice);
+
     }
 }
