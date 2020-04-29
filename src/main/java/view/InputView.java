@@ -2,6 +2,7 @@ package view;
 
 import domain.Validator;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -39,4 +40,6 @@ public class InputView {
 
         return countOfManualLotto;
     }
+
+
 }
