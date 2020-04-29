@@ -35,6 +35,10 @@ public class LottoMachine {
     private static List<Lotto> createAutomaticLottoes(int countOfAutomaticLotto) {
         List<Lotto> automaticLottoes = new ArrayList<>();
 
+        for(int i=0; i<countOfAutomaticLotto; i++) {
+            List<Integer> automaticNumbers = new ArrayList<>();
+            automaticLottoes.add(automaticLottoGenerator.generateLotto(automaticNumbers));
+        }
 
         return automaticLottoes;
     }
