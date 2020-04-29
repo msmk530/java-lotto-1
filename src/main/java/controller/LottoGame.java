@@ -1,8 +1,10 @@
 package controller;
 
-public class LottoGame {
+import view.InputView;
 
-    public static void run() {
-        System.out.println("test");
+public class LottoGame {
+    public void run() {
+        int purchasePrice = InputView.inputPurchasePrice();
+        System.out.println(purchasePrice);
     }
 }
