@@ -9,6 +9,14 @@ public class WinningLotto {
         this.bonus = bonus;
     }
 
+    public Rank match(Lotto userLotto) {
+        int countOfMatch = userLotto.countMatch(lotto);
+        boolean matchBonus = userLotto.containNumber(bonus);
+        return Rank.valueOf(countOfMatch, matchBonus);
+
+    }
+
+
     public Lotto getLotto() {
         return lotto;
     }

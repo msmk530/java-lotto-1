@@ -10,6 +10,16 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public int countMatch(Lotto winningLotto) {
+        return (int) numbers.stream()
+                .filter(winningLotto::containNumber)
+                .count();
+    }
+
+    boolean containNumber(int number) {
+        return numbers.contains(number);
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
