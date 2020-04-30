@@ -3,6 +3,8 @@ package domain;
 import exception.ManualLotto.*;
 import exception.PurchasePrice.MinimumPurchasePriceException;
 import exception.PurchasePrice.PurchasePriceUnitException;
+import exception.WinningLotto.BetweenBonusAndWinningNumbersDuplicateExcetpion;
+import exception.WinningLotto.BonusNumberRangeException;
 
 import java.util.*;
 
@@ -13,7 +15,9 @@ public class Validator {
     private static final String MAXIMUM_COUNT_OF_MANUAL_LOTTO_ERROR_MESSAGE = "수동으로 구매하실 수 있는 매수는 최대";
     private static final String SELECTED_NUMBER_COUNT_ERROR_MEESAGE = "번호는 6개를 입력해 주셔야 합니다.";
     private static final String SELECTED_NUMBER_DUPLICATE_ERROR_MESSAGE = "선택하신 번호에 중복이 있으면 안됩니다.";
-    private static final String Lotto_NUMBER_RANGE_ERROR_MESSAGE = "번호는 1부터 45사이의 숫자여야 합니다.";
+    private static final String LOTTO_NUMBER_RANGE_ERROR_MESSAGE = "번호는 1부터 45사이의 숫자여야 합니다.";
+    private static final String BONUS_AND_WINNINGNUMBERS_DUPLICATE_ERROR_MESSAGE = "보너스번호는 당첨번호와 중복되면 안됩니다.";
+    private static final String BONUS_NUMBER_RANGE_ERROR_MESSAGE = "보너스 번호는 1부터 45사이의 숫자여야 합니다.";
     private static final int MINIMUM_LOTTO_NUMBER = 1;
     private static final int MAXIMUM_LOTTO_NUMBER = 45;
 
@@ -55,12 +59,21 @@ public class Validator {
             throw new SelectedNumbersDuplicateException(SELECTED_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
 
-        for (int i=0; i< selectedNumbers.size(); i++) {
-            if (Integer.parseInt(selectedNumbers.get(i))<MINIMUM_LOTTO_NUMBER
-                    || Integer.parseInt(selectedNumbers.get(i))>MAXIMUM_LOTTO_NUMBER) {
-                throw new LottoNumberOutOfRangeException(Lotto_NUMBER_RANGE_ERROR_MESSAGE);
+        for (int i = 0; i < selectedNumbers.size(); i++) {
+            if (Integer.parseInt(selectedNumbers.get(i)) < MINIMUM_LOTTO_NUMBER
+                    || Integer.parseInt(selectedNumbers.get(i)) > MAXIMUM_LOTTO_NUMBER) {
+                throw new LottoNumberOutOfRangeException(LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
             }
         }
 
+    }
+
+    public static void isValidBonusNumber(int bonusNumber, List<Integer> winningNumbers) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new BetweenBonusAndWinningNumbersDuplicateExcetpion(BONUS_AND_WINNINGNUMBERS_DUPLICATE_ERROR_MESSAGE);
+        }
+        if (bonusNumber < MINIMUM_LOTTO_NUMBER || bonusNumber > MAXIMUM_LOTTO_NUMBER) {
+            throw new BonusNumberRangeException(BONUS_NUMBER_RANGE_ERROR_MESSAGE);
+        }
     }
 }

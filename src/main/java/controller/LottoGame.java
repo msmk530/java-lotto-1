@@ -1,9 +1,6 @@
 package controller;
 
-import domain.AutomaticLottoGenerator;
-import domain.Lotto;
-import domain.LottoMachine;
-import domain.ManualLottoGenerator;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
@@ -17,17 +14,18 @@ public class LottoGame {
         int countOfAutomaticLotto = countOfPurchaseLotto - countOfManualLotto;
         List<Lotto> allLotto = new ArrayList<>();
 
-        for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfManualLotto; countOfFinishedLotto++) {
-            List<Integer> manualNumbers = InputView.inputManualNumber(countOfFinishedLotto);
-            allLotto.add(LottoMachine.createLotto(new ManualLottoGenerator(), manualNumbers));
-        }
-
-        for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfAutomaticLotto; countOfFinishedLotto++) {
-            List<Integer> automaticNumbers = new ArrayList<>();
-            allLotto.add(LottoMachine.createLotto(new AutomaticLottoGenerator(), automaticNumbers));
-        }
+        allLotto.addAll(LottoMachine.createManualLotto(new ManualLottoGenerator(),countOfManualLotto));
+        allLotto.addAll(LottoMachine.createAutomaticLotto(new AutomaticLottoGenerator(),countOfAutomaticLotto));
 
         OutputView.printAllLotto(allLotto, countOfManualLotto, countOfAutomaticLotto);
 
+        List<Integer> winningNumbers = InputView.inputWinningLottoNumbers();
+        int bonus = InputView.inputBonus(winningNumbers);
+
+
+
     }
+
+
+
 }

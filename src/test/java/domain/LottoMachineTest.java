@@ -10,24 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LottoMachineTest {
-
     @Test
-    void 로또머신_수동로또_반환_테스트() {
-        //given
-        Lotto manualLotto;
-        //when
-        manualLotto = LottoMachine.createLotto(new ManualLottoGenerator(), Arrays.asList(1, 2, 3, 4, 5, 6));
-        //then
-        assertThat(manualLotto).isNotNull();
+    void 자동_로또리스트_반환_테스트() {
+        List<Lotto> lottoes = LottoMachine.createAutomaticLotto(new AutomaticLottoGenerator(), 5);
+        assertThat(lottoes.size()).isEqualTo(5);
     }
 
-    @Test
-    void 로또머신_자동로또_반환_테스트() {
-        Lotto automaticLotto;
-        List<Integer> emptyNumbers = new ArrayList<>();
-
-        automaticLotto = LottoMachine.createLotto(new AutomaticLottoGenerator(), emptyNumbers);
-
-        assertThat(automaticLotto).isNotNull();
-    }
 }
