@@ -1,9 +1,6 @@
 package domain;
 
-import exception.ManualLotto.CountOfSelectNumberException;
-import exception.ManualLotto.MaximumCountOfManualLottoException;
-import exception.ManualLotto.MinimumCountOfManualLottoException;
-import exception.ManualLotto.SelectedNumbersDuplicateException;
+import exception.ManualLotto.*;
 import exception.PurchasePrice.MinimumPurchasePriceException;
 import exception.PurchasePrice.PurchasePriceUnitException;
 
@@ -16,6 +13,9 @@ public class Validator {
     private static final String MAXIMUM_COUNT_OF_MANUAL_LOTTO_ERROR_MESSAGE = "수동으로 구매하실 수 있는 매수는 최대";
     private static final String SELECTED_NUMBER_COUNT_ERROR_MEESAGE = "번호는 6개를 입력해 주셔야 합니다.";
     private static final String SELECTED_NUMBER_DUPLICATE_ERROR_MESSAGE = "선택하신 번호에 중복이 있으면 안됩니다.";
+    private static final String Lotto_NUMBER_RANGE_ERROR_MESSAGE = "번호는 1부터 45사이의 숫자여야 합니다.";
+    private static final int MINIMUM_LOTTO_NUMBER = 1;
+    private static final int MAXIMUM_LOTTO_NUMBER = 45;
 
     public static void isCorrectPurchasePrice(int purchasePrice) {
         if (purchasePrice < 1000) {
@@ -54,5 +54,13 @@ public class Validator {
         if (selectedNumbers.size() != checkDuplicate.size()) {
             throw new SelectedNumbersDuplicateException(SELECTED_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
+
+        for (int i=0; i< selectedNumbers.size(); i++) {
+            if (Integer.parseInt(selectedNumbers.get(i))<MINIMUM_LOTTO_NUMBER
+                    || Integer.parseInt(selectedNumbers.get(i))>MAXIMUM_LOTTO_NUMBER) {
+                throw new LottoNumberOutOfRangeException(Lotto_NUMBER_RANGE_ERROR_MESSAGE);
+            }
+        }
+
     }
 }

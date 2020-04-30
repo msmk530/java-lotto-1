@@ -30,5 +30,5 @@ class AutomaticLottoGeneratorTest {
     @Test
     void 생성된_로또_사이즈_테스트() {
         assertThat(automaticLotto.getNumbers().size()).isEqualTo(COUNT_OF_LOTTO_NUMBER);
-    }g
+    }
 }

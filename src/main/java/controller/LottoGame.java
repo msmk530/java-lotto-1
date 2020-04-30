@@ -18,7 +18,7 @@ public class LottoGame {
         List<Lotto> allLotto = new ArrayList<>();
 
         for (int i = 0; i < countOfManualLotto; i++) {
-            List<Integer> manualNumbers = InputView.inputManualNumber();
+            List<Integer> manualNumbers = InputView.inputManualNumber(i);
             allLotto.add(LottoMachine.createLotto(new ManualLottoGenerator(), manualNumbers));
         }
 
