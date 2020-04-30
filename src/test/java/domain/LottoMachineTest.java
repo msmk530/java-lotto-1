@@ -13,5 +13,4 @@ class LottoMachineTest {
         List<Lotto> lottoes = LottoMachine.createAutomaticLotto(new AutomaticLottoGenerator(), 5);
         assertThat(lottoes.size()).isEqualTo(5);
     }
-
 }
