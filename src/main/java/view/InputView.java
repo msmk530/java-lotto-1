@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import static view.OutputView.printMessage;
+
 public class InputView {
     private static final String DEMAND_PURCHASE_PRICE = "구입금액을 입력해주세요.";
     private static final String DEMAND_COUNT_OF_MANUAL_LOTTO = "수동으로 구매할 로또 수를 입력해주세요.";
@@ -27,7 +29,7 @@ public class InputView {
         int purchasePrice;
 
         try {
-            System.out.println(DEMAND_PURCHASE_PRICE);
+            printMessage(DEMAND_PURCHASE_PRICE);
             purchasePrice = scanner.nextInt();
             Validator.isCorrectPurchasePrice(purchasePrice);
         } catch (Exception e) {
@@ -37,12 +39,11 @@ public class InputView {
         return purchasePrice / PRICE_PER_ONE_LOTTO;
     }
 
-
     public static int inputCountOfManualLotto(int countOfPurchaseLotto) {
         int countOfManualLotto;
 
         try {
-            System.out.println(DEMAND_COUNT_OF_MANUAL_LOTTO);
+            printMessage(DEMAND_COUNT_OF_MANUAL_LOTTO);
             countOfManualLotto = scanner.nextInt();
             Validator.isCorrectCountOfManualLotto(countOfPurchaseLotto, countOfManualLotto);
         } catch (Exception e) {
@@ -58,7 +59,7 @@ public class InputView {
         List<Integer> lottoNumbers;
 
         try {
-            System.out.println(DEMAND_MANUAL_NUMBERS + countFinishedManualLotto);
+            printMessage(DEMAND_MANUAL_NUMBERS + countFinishedManualLotto);
             String selectedNumbers = scanner.next();
             Validator.isValidNumbers(selectedNumbers);
             lottoNumbers = ChangeStringToIntList.changeStringToList(selectedNumbers);
@@ -75,7 +76,7 @@ public class InputView {
         List<Integer> winningNumbers;
 
         try {
-            System.out.println(DEMAND_WINNING_NUMBERS);
+            printMessage(DEMAND_WINNING_NUMBERS);
             String lastWeekWinningNumbers = scanner.next();
             Validator.isValidNumbers(lastWeekWinningNumbers);
             winningNumbers = ChangeStringToIntList.changeStringToList(lastWeekWinningNumbers);
@@ -91,7 +92,7 @@ public class InputView {
         int bonusNumber;
 
         try {
-            System.out.println(DEMAND_BONUS_NUMBER);
+            printMessage(DEMAND_BONUS_NUMBER);
             bonusNumber = scanner.nextInt();
             Validator.isValidBonusNumber(bonusNumber,winningNumbers);
         }catch(Exception e){
