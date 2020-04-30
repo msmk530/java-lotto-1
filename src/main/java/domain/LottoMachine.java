@@ -29,6 +29,11 @@ public class LottoMachine {
         return automaticLottoes;
     }
 
+    public static WinningLotto createWinningLotto(List<Integer> winningNumbers, int bonus) {
+        Lotto winningNumberLotto = createLotto(new ManualLottoGenerator(), winningNumbers);
+        return new WinningLotto(winningNumberLotto, bonus);
+    }
+
     private static Lotto createLotto(LottoGenerator strategy, List<Integer> numbers) {
         return strategy.generateLotto(numbers);
     }
