@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
-    private LottoMachine(){
+    private LottoMachine() {
         throw new AssertionError();
     }
 

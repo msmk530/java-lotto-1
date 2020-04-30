@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import static view.OutputView.printErrorMessage;
 import static view.OutputView.printMessage;
 
 public class InputView {
@@ -33,7 +34,7 @@ public class InputView {
             purchasePrice = scanner.nextInt();
             Validator.isCorrectPurchasePrice(purchasePrice);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            printErrorMessage(e.getMessage());
             return inputPurchasePrice();
         }
         return purchasePrice / PRICE_PER_ONE_LOTTO;
@@ -47,7 +48,7 @@ public class InputView {
             countOfManualLotto = scanner.nextInt();
             Validator.isCorrectCountOfManualLotto(countOfPurchaseLotto, countOfManualLotto);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            printErrorMessage(e.getMessage());
             return inputCountOfManualLotto(countOfPurchaseLotto);
         }
 
@@ -64,7 +65,7 @@ public class InputView {
             Validator.isValidNumbers(selectedNumbers);
             lottoNumbers = ChangeStringToIntList.changeStringToList(selectedNumbers);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            printErrorMessage(e.getMessage());
             return inputManualNumber(countFinishedManualLotto);
         }
 
@@ -81,7 +82,7 @@ public class InputView {
             Validator.isValidNumbers(lastWeekWinningNumbers);
             winningNumbers = ChangeStringToIntList.changeStringToList(lastWeekWinningNumbers);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            printErrorMessage(e.getMessage());
             return inputWinningLottoNumbers();
         }
 
@@ -96,7 +97,7 @@ public class InputView {
             bonusNumber = scanner.nextInt();
             Validator.isValidBonusNumber(bonusNumber,winningNumbers);
         }catch(Exception e){
-            System.err.println(e.getMessage());
+            printErrorMessage(e.getMessage());
             return inputBonus(winningNumbers);
         }
         return bonusNumber;
