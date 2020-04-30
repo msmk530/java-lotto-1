@@ -17,12 +17,12 @@ public class LottoGame {
         int countOfAutomaticLotto = countOfPurchaseLotto - countOfManualLotto;
         List<Lotto> allLotto = new ArrayList<>();
 
-        for (int i = 0; i < countOfManualLotto; i++) {
-            List<Integer> manualNumbers = InputView.inputManualNumber(i);
+        for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfManualLotto; countOfFinishedLotto++) {
+            List<Integer> manualNumbers = InputView.inputManualNumber(countOfFinishedLotto);
             allLotto.add(LottoMachine.createLotto(new ManualLottoGenerator(), manualNumbers));
         }
 
-        for (int i = 0; i < countOfAutomaticLotto; i++) {
+        for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfAutomaticLotto; countOfFinishedLotto++) {
             List<Integer> automaticNumbers = new ArrayList<>();
             allLotto.add(LottoMachine.createLotto(new AutomaticLottoGenerator(), automaticNumbers));
         }
