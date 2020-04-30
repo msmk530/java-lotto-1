@@ -9,7 +9,7 @@ public class ChangeStringToIntList {
         List<String> targetNumbers = Arrays.asList(numbers.split(","));
         List<Integer> changedNumbers = new ArrayList<>();
 
-        for(int i=0; i<targetNumbers.size(); i++){
+        for (int i = 0; i < targetNumbers.size(); i++) {
             changedNumbers.add(Integer.parseInt(targetNumbers.get(i)));
         }
 

@@ -12,6 +12,6 @@ public class RandomNumberGenerator {
     }
 
     public static int generateRandomNumber() {
-        return random.nextInt(MAXIMUM_RANDOM_NUMBER_RANGE)+MINIMUM_RANDOM_NUMBER_RANGE;
+        return random.nextInt(MAXIMUM_RANDOM_NUMBER_RANGE) + MINIMUM_RANDOM_NUMBER_RANGE;
     }
 }

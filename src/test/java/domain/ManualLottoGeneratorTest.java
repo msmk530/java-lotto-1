@@ -4,19 +4,20 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ManualLottoGeneratorTest {
-
     @Test
-    void generateLotto() {
+    void 수동_로또_생성_테스트() {
         //given
-        LottoGenerator manualLottoGenerator = new ManualLottoGenerator();
+        LottoGenerator generator = new ManualLottoGenerator();
+        Lotto compareLotto;
         Lotto manualLotto;
         //when
-        manualLotto = manualLottoGenerator.generateLotto(Arrays.asList(1,2,3,4,5,6));
+        compareLotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        manualLotto = generator.generateLotto(Arrays.asList(4, 5, 6, 1, 2, 3));
         //then
-        assertThat(manualLotto).isNotNull();
+        assertThat(manualLotto.equals(compareLotto)).isTrue();
     }
 }

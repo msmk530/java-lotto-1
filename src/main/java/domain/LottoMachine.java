@@ -7,41 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoMachine {
-    private static LottoGenerator manualLottoGenerator = new ManualLottoGenerator();
-    private static LottoGenerator automaticLottoGenerator = new AutomaticLottoGenerator();
-
-    public static List<Lotto> createLotto(int countOfManualLotto, int countOfAutomaticLotto) {
-        List<Lotto> allPurchasedLotto = new ArrayList<>();
-        List<Lotto> manualLottoes = createManualLottoes(countOfManualLotto);
-        List<Lotto> automaticLottoes = createAutomaticLottoes(countOfAutomaticLotto);
-
-        allPurchasedLotto.addAll(manualLottoes);
-        allPurchasedLotto.addAll(automaticLottoes);
-
-        return allPurchasedLotto;
+    public static Lotto createLotto(LottoGenerator strategy, List<Integer> numbers) {
+        return strategy.generateLotto(numbers);
     }
-
-    private static List<Lotto> createManualLottoes(int countOfManualLotto) {
-        List<Lotto> manualLottoes = new ArrayList<>();
-
-        for(int i=0; i<countOfManualLotto; i++){
-            List<Integer> manualNumbers = InputView.inputManualNumber();
-            manualLottoes.add(manualLottoGenerator.generateLotto(manualNumbers));
-        }
-
-        return manualLottoes;
-    }
-
-    private static List<Lotto> createAutomaticLottoes(int countOfAutomaticLotto) {
-        List<Lotto> automaticLottoes = new ArrayList<>();
-
-        for(int i=0; i<countOfAutomaticLotto; i++) {
-            List<Integer> automaticNumbers = new ArrayList<>();
-            automaticLottoes.add(automaticLottoGenerator.generateLotto(automaticNumbers));
-        }
-
-        return automaticLottoes;
-    }
-
 
 }

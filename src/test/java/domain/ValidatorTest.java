@@ -39,12 +39,12 @@ class ValidatorTest {
     @Test
     void 수동로또번호_갯수_테스트() {
         assertThatExceptionOfType(CountOfSelectNumberException.class)
-                .isThrownBy(()->Validator.isValidNumbers("1,2,3,4,5"));
+                .isThrownBy(() -> Validator.isValidNumbers("1,2,3,4,5"));
     }
 
     @Test
     void 수동로또번호_중복_테스트() {
         assertThatExceptionOfType(SelectedNumbersDuplicateException.class)
-                .isThrownBy(()->Validator.isValidNumbers("1,1,2,3,4,5"));
+                .isThrownBy(() -> Validator.isValidNumbers("1,1,2,3,4,5"));
     }
 }
