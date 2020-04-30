@@ -5,6 +5,7 @@ import domain.Lotto;
 import domain.LottoMachine;
 import domain.ManualLottoGenerator;
 import view.InputView;
+import view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,6 @@ public class LottoGame {
         int countOfPurchaseLotto = InputView.inputPurchasePrice();
         int countOfManualLotto = InputView.inputCountOfManualLotto(countOfPurchaseLotto);
         int countOfAutomaticLotto = countOfPurchaseLotto - countOfManualLotto;
-
         List<Lotto> allLotto = new ArrayList<>();
 
         for (int i = 0; i < countOfManualLotto; i++) {
@@ -26,6 +26,8 @@ public class LottoGame {
             List<Integer> automaticNumbers = new ArrayList<>();
             allLotto.add(LottoMachine.createLotto(new AutomaticLottoGenerator(), automaticNumbers));
         }
+
+        OutputView.printAllLotto(allLotto, countOfManualLotto, countOfAutomaticLotto);
 
     }
 }
