@@ -3,38 +3,31 @@ package domain;
 import util.ChangeStringToIntList;
 import view.InputView;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import static view.OutputView.printErrorMessage;
 
-public class ManualLottoGenerator implements LottoGenerator {
+public class WinningLottoGenerator implements LottoGenerator{
     @Override
     public Lotto generateLotto() {
-        try {
-            List<Integer> lottoNumbers = selectNumbers();
-            Collections.sort(lottoNumbers);
-            return new Lotto(lottoNumbers);
-        } catch (Exception e) {
-            printErrorMessage(e.getMessage());
-            return generateLotto();
-        }
+        List<Integer> lottoNumbers = makeNumbers();
+        Collections.sort(lottoNumbers);
+        return new Lotto(lottoNumbers);
     }
 
-    private List<Integer> selectNumbers(){
+    private List<Integer> makeNumbers(){
         List<Integer> lottoNumbers;
 
         try {
-            String selectedNumbers = InputView.inputManualNumber();
+            String selectedNumbers = InputView.inputWinningLottoNumbers();
             Validator.isValidNumbers(selectedNumbers);
             lottoNumbers = ChangeStringToIntList.change(selectedNumbers);
         } catch (Exception e) {
             printErrorMessage(e.getMessage());
-            return selectNumbers();
+            return makeNumbers();
         }
 
         return lottoNumbers;
     }
-
 }

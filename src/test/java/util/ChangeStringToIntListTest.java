@@ -16,7 +16,7 @@ class ChangeStringToIntListTest {
         String numbers = "1,2,3,4,5,6";
         List<Integer> compareNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         //when
-        List<Integer> changeType = ChangeStringToIntList.changeStringToList(numbers);
+        List<Integer> changeType = ChangeStringToIntList.change(numbers);
         //then
         assertThat(changeType).isEqualTo(compareNumbers);
     }

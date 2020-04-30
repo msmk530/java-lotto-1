@@ -16,8 +16,7 @@ class AutomaticLottoGeneratorTest {
     @BeforeEach
     void setUp() {
         LottoGenerator generator = new AutomaticLottoGenerator();
-        List<Integer> emptyNumbers = new ArrayList<>();
-        automaticLotto = generator.generateLotto(emptyNumbers);
+        automaticLotto = generator.generateLotto();
     }
 
     @Test

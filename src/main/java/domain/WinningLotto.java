@@ -1,10 +1,13 @@
 package domain;
 
+import static view.OutputView.printErrorMessage;
+
 public class WinningLotto {
     private final Lotto lotto;
     private final int bonus;
 
     public WinningLotto(Lotto lotto, int bonus) {
+
         this.lotto = lotto;
         this.bonus = bonus;
     }

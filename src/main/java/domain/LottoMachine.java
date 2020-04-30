@@ -5,6 +5,8 @@ import view.InputView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static view.OutputView.printErrorMessage;
+
 public class LottoMachine {
     private LottoMachine() {
         throw new AssertionError();
@@ -12,10 +14,8 @@ public class LottoMachine {
 
     public static List<Lotto> createManualLotto(LottoGenerator strategy, int countOfManualLotto) {
         List<Lotto> manualLottoes = new ArrayList<>();
-
-        for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfManualLotto; countOfFinishedLotto++) {
-            List<Integer> manualNumbers = InputView.inputManualNumber(countOfFinishedLotto);
-            manualLottoes.add(createLotto(strategy, manualNumbers));
+        for (int i = 0; i < countOfManualLotto; i++) {
+            manualLottoes.add(createLotto(strategy));
         }
         return manualLottoes;
     }
@@ -24,19 +24,32 @@ public class LottoMachine {
         List<Lotto> automaticLottoes = new ArrayList<>();
 
         for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfAutomaticLotto; countOfFinishedLotto++) {
-            List<Integer> automaticNumbers = new ArrayList<>();
-            automaticLottoes.add(LottoMachine.createLotto(strategy, automaticNumbers));
+            automaticLottoes.add(createLotto(strategy));
         }
 
         return automaticLottoes;
     }
 
-    public static WinningLotto createWinningLotto(List<Integer> winningNumbers, int bonus) {
-        Lotto winningNumberLotto = createLotto(new ManualLottoGenerator(), winningNumbers);
+    public static WinningLotto createWinningLotto(LottoGenerator strategy) {
+        Lotto winningNumberLotto = createLotto(new WinningLottoGenerator());
+        int bonus = createBonusNumber(winningNumberLotto);
+
         return new WinningLotto(winningNumberLotto, bonus);
+
     }
 
-    private static Lotto createLotto(LottoGenerator strategy, List<Integer> numbers) {
-        return strategy.generateLotto(numbers);
+    private static int createBonusNumber(Lotto winningNumberLotto) {
+        try {
+            int bonus = InputView.inputBonus();
+            Validator.isValidBonusNumber(bonus, winningNumberLotto.getNumbers());
+            return bonus;
+        } catch (Exception e) {
+            printErrorMessage(e.getMessage());
+            return createBonusNumber(winningNumberLotto);
+        }
+    }
+
+    private static Lotto createLotto(LottoGenerator strategy) {
+        return strategy.generateLotto();
     }
 }

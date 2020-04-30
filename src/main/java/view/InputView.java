@@ -55,51 +55,18 @@ public class InputView {
         return countOfManualLotto;
     }
 
-
-    public static List<Integer> inputManualNumber(int countFinishedManualLotto) {
-        List<Integer> lottoNumbers;
-
-        try {
-            printMessage(DEMAND_MANUAL_NUMBERS + countFinishedManualLotto);
-            String selectedNumbers = scanner.next();
-            Validator.isValidNumbers(selectedNumbers);
-            lottoNumbers = ChangeStringToIntList.changeStringToList(selectedNumbers);
-        } catch (Exception e) {
-            printErrorMessage(e.getMessage());
-            return inputManualNumber(countFinishedManualLotto);
-        }
-
-        return lottoNumbers;
+    public static String inputManualNumber() {
+        printMessage(DEMAND_MANUAL_NUMBERS);
+        return scanner.next();
     }
 
-
-    public static List<Integer> inputWinningLottoNumbers() {
-        List<Integer> winningNumbers;
-
-        try {
-            printMessage(DEMAND_WINNING_NUMBERS);
-            String lastWeekWinningNumbers = scanner.next();
-            Validator.isValidNumbers(lastWeekWinningNumbers);
-            winningNumbers = ChangeStringToIntList.changeStringToList(lastWeekWinningNumbers);
-        } catch (Exception e) {
-            printErrorMessage(e.getMessage());
-            return inputWinningLottoNumbers();
-        }
-
-        return winningNumbers;
+    public static String inputWinningLottoNumbers() {
+        printMessage(DEMAND_WINNING_NUMBERS);
+        return scanner.next();
     }
 
-    public static int inputBonus(List<Integer> winningNumbers) {
-        int bonusNumber;
-
-        try {
-            printMessage(DEMAND_BONUS_NUMBER);
-            bonusNumber = scanner.nextInt();
-            Validator.isValidBonusNumber(bonusNumber,winningNumbers);
-        }catch(Exception e){
-            printErrorMessage(e.getMessage());
-            return inputBonus(winningNumbers);
-        }
-        return bonusNumber;
+    public static int inputBonus() {
+        printMessage(DEMAND_BONUS_NUMBER);
+        return scanner.nextInt();
     }
 }

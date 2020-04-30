@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ChangeStringToIntList {
-    public static List<Integer> changeStringToList(String numbers) {
+    public static List<Integer> change(String numbers) {
         List<String> targetNumbers = Arrays.asList(numbers.split(","));
         List<Integer> changedNumbers = new ArrayList<>();
 

@@ -15,7 +15,7 @@ class WinningLottoTest {
 
     @BeforeEach
     void setUp() {
-        winningNumbersLotto = new ManualLottoGenerator().generateLotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        winningNumbersLotto = new LottoGeneratorMock().generateLotto();
         bonus = 7;
         winningLotto = new WinningLotto(winningNumbersLotto, bonus);
     }

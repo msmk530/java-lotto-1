@@ -9,6 +9,10 @@ import java.util.List;
 
 public class LottoGame {
     public void run() {
+        /*
+        LottoFactory lottoFactory = new LottoFactory();
+*/
+
         int countOfPurchaseLotto = InputView.inputPurchasePrice();
         int countOfManualLotto = InputView.inputCountOfManualLotto(countOfPurchaseLotto);
         int countOfAutomaticLotto = countOfPurchaseLotto - countOfManualLotto;
@@ -20,10 +24,7 @@ public class LottoGame {
 
         OutputView.printAllLotto(allLotto, countOfManualLotto, countOfAutomaticLotto);
 
-        List<Integer> winningNumbers = InputView.inputWinningLottoNumbers();
-        int bonus = InputView.inputBonus(winningNumbers);
-
-        WinningLotto winningLotto = LottoMachine.createWinningLotto(winningNumbers, bonus);
+        WinningLotto winningLotto = LottoMachine.createWinningLotto(new WinningLottoGenerator());
         GameResult gameResult = new GameResult(countOfPurchaseLotto, allLotto, winningLotto);
         OutputView.printResult(gameResult);
     }
