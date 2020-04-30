@@ -13,6 +13,9 @@ public class OutputView {
     private static final int PRICE_PER_LOTTOGAME = 1000;
     private static final int PERCENT = 100;
 
+    private OutputView() {
+        throw new AssertionError();
+    }
 
     public static void printAllLotto(List<Lotto> allLotto, int countOfManualLotto, int countOfAutomaticLotto) {
         System.out.printf("수동으로 %d장 , 자동으로 %d장을 구매하셨습니다.\n", countOfManualLotto, countOfAutomaticLotto);

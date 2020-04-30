@@ -21,6 +21,10 @@ public class Validator {
     private static final int MINIMUM_LOTTO_NUMBER = 1;
     private static final int MAXIMUM_LOTTO_NUMBER = 45;
 
+    private Validator() {
+        throw new AssertionError();
+    }
+
     public static void isCorrectPurchasePrice(int purchasePrice) {
         if (purchasePrice < 1000) {
             throw new MinimumPurchasePriceException(MINIMUM_PURCHASE_PRICE_ERROR_MESSAGE);

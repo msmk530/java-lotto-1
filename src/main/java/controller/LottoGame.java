@@ -12,6 +12,7 @@ public class LottoGame {
         int countOfPurchaseLotto = InputView.inputPurchasePrice();
         int countOfManualLotto = InputView.inputCountOfManualLotto(countOfPurchaseLotto);
         int countOfAutomaticLotto = countOfPurchaseLotto - countOfManualLotto;
+
         List<Lotto> allLotto = new ArrayList<>();
 
         allLotto.addAll(LottoMachine.createManualLotto(new ManualLottoGenerator(), countOfManualLotto));

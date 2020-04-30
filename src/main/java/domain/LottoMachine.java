@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+    private LottoMachine(){
+        throw new AssertionError();
+    }
+
     public static List<Lotto> createManualLotto(LottoGenerator strategy, int countOfManualLotto) {
         List<Lotto> manualLottoes = new ArrayList<>();
 

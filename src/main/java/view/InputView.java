@@ -19,6 +19,10 @@ public class InputView {
     private static final int PRICE_PER_ONE_LOTTO = 1000;
     private static final Scanner scanner = new Scanner(System.in);
 
+    private InputView() {
+        throw new AssertionError();
+    }
+
     public static int inputPurchasePrice() {
         int purchasePrice;
 
