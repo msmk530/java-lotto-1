@@ -1,12 +1,13 @@
 package domain;
 
-import exception.ManualLotto.CountOfSelectNumberException;
-import exception.ManualLotto.MaximumCountOfManualLottoException;
-import exception.ManualLotto.MinimumCountOfManualLottoException;
-import exception.ManualLotto.SelectedNumbersDuplicateException;
+import exception.ManualLotto.*;
 import exception.PurchasePrice.MinimumPurchasePriceException;
 import exception.PurchasePrice.PurchasePriceUnitException;
+import exception.WinningLotto.BetweenBonusAndWinningNumbersDuplicateExcetpion;
+import exception.WinningLotto.BonusNumberRangeException;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -46,5 +47,23 @@ class ValidatorTest {
     void 수동로또번호_중복_테스트() {
         assertThatExceptionOfType(SelectedNumbersDuplicateException.class)
                 .isThrownBy(() -> Validator.isValidNumbers("1,1,2,3,4,5"));
+    }
+
+    @Test
+    void 수동로또번호_범위_테스트() {
+        assertThatExceptionOfType(LottoNumberOutOfRangeException.class)
+                .isThrownBy(()->Validator.isValidNumbers("1,2,3,4,5,46"));
+    }
+
+    @Test
+    void 당첨번호_보너스번호_중복_테스트() {
+        assertThatExceptionOfType(BetweenBonusAndWinningNumbersDuplicateExcetpion.class)
+                .isThrownBy(()->Validator.isValidBonusNumber(5,Arrays.asList(1,2,3,4,5,6)));
+    }
+
+    @Test
+    void 보너스번호_범위_테스트() {
+        assertThatExceptionOfType(BonusNumberRangeException.class)
+                .isThrownBy(()->Validator.isValidBonusNumber(46, Arrays.asList(1,2,3,4,5,6)));
     }
 }
