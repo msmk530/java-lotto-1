@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class AutomaticLottoGeneratorTest {
     private static final int COUNT_OF_LOTTO_NUMBER = 6;
+
     private Lotto automaticLotto;
 
     @BeforeEach
