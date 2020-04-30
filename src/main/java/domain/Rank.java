@@ -9,7 +9,7 @@ public enum Rank {
     MISS(0, 0, "");
 
 
-    private static final int WINNING_MIN_COUNT = 3;
+    private static final int MINIMUM_COUNT_FOR_WINNING = 3;
 
     private int countOfMatch;
     private int winningMoney;
@@ -21,12 +21,8 @@ public enum Rank {
         this.message = message;
     }
 
-    public int getWinningMoney() {
-        return winningMoney;
-    }
-
     public static Rank valueOf(int countOfMatch, boolean matchBonus) {
-        if (countOfMatch < WINNING_MIN_COUNT) {
+        if (countOfMatch < MINIMUM_COUNT_FOR_WINNING) {
             return MISS;
         }
 
@@ -35,7 +31,7 @@ public enum Rank {
         }
 
         for (Rank rank : values()) {
-            if (rank.matchCount(countOfMatch) && rank!=SECOND) {
+            if (rank.matchCount(countOfMatch) && rank != SECOND) {
                 return rank;
             }
         }
@@ -43,14 +39,17 @@ public enum Rank {
         throw new IllegalArgumentException(countOfMatch + "는 유효하지 않은 값입니다.");
     }
 
-    private boolean matchCount(int countOfMatch) {
-        return this.countOfMatch == countOfMatch;
-    }
-
-
     public void printMessage(int count) {
         if (!this.equals(MISS)) {
             System.out.println(message + count + "개");
         }
+    }
+
+    private boolean matchCount(int countOfMatch) {
+        return this.countOfMatch == countOfMatch;
+    }
+
+    public int getWinningMoney() {
+        return winningMoney;
     }
 }

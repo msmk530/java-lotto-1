@@ -6,16 +6,11 @@ import java.util.Map;
 
 public class GameResult {
     private static int countOfPurchaseLotto;
-    private static List<Lotto> allLotto;
-    private static WinningLotto winningLotto;
-
     private static Map<Rank, Integer> result;
     private static Rank rank;
 
     public GameResult(int countOfPurchaseLotto, List<Lotto> allLotto, WinningLotto winningLotto) {
         this.countOfPurchaseLotto = countOfPurchaseLotto;
-        this.allLotto = allLotto;
-        this.winningLotto = winningLotto;
 
         result = initResult();
 
