@@ -23,9 +23,8 @@ public class LottoGame {
         int bonus = InputView.inputBonus(winningNumbers);
 
         WinningLotto winningLotto = LottoMachine.createWinningLotto(winningNumbers, bonus);
-        GameResult gameResult = new GameResult(countOfPurchaseLotto,allLotto,winningLotto);
+        GameResult gameResult = new GameResult(countOfPurchaseLotto, allLotto, winningLotto);
         OutputView.printResult(gameResult);
-
     }
 
 

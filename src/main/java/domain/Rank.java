@@ -8,20 +8,17 @@ public enum Rank {
     FIFTH(3, 5_000, "3개 일치(5000원) - "), // 5등
     MISS(0, 0, "");
 
+
     private static final int WINNING_MIN_COUNT = 3;
 
     private int countOfMatch;
     private int winningMoney;
     private String message;
 
-    private Rank(int countOfMatch, int winningMoney, String message) {
+    Rank(int countOfMatch, int winningMoney, String message) {
         this.countOfMatch = countOfMatch;
         this.winningMoney = winningMoney;
         this.message = message;
-    }
-
-    public int getCountOfMatch() {
-        return countOfMatch;
     }
 
     public int getWinningMoney() {
@@ -38,7 +35,7 @@ public enum Rank {
         }
 
         for (Rank rank : values()) {
-            if (rank.matchCount(countOfMatch)) {
+            if (rank.matchCount(countOfMatch) && rank!=SECOND) {
                 return rank;
             }
         }
@@ -49,6 +46,7 @@ public enum Rank {
     private boolean matchCount(int countOfMatch) {
         return this.countOfMatch == countOfMatch;
     }
+
 
     public void printMessage(int count) {
         if (!this.equals(MISS)) {
