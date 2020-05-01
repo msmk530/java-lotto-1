@@ -5,8 +5,8 @@ import java.util.List;
 
 public class AutomaticLottoGenerator implements LottoGenerator {
     @Override
-    public Lotto generateLotto(List<Integer> numbers) {
-        Collections.sort(numbers);
-        return new Lotto(numbers);
+    public Lotto generateLotto(List<Integer> lottonumbers) {
+        Collections.sort(lottonumbers);
+        return new Lotto(lottonumbers);
     }
 }

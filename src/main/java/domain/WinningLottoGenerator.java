@@ -6,14 +6,8 @@ import java.util.List;
 public class WinningLottoGenerator implements LottoGenerator {
     @Override
     public Lotto generateLotto(List<Integer> lottoNumbers) {
-        List<Integer> selectedNumbers = validateLottoNumbers(lottoNumbers);
-
-        Collections.sort(selectedNumbers);
-        return new Lotto(selectedNumbers);
+        Collections.sort(lottoNumbers);
+        return new Lotto(lottoNumbers);
     }
 
-    private List<Integer> validateLottoNumbers(List<Integer> selectedNumbers) {
-        Validator.isValidNumbers(selectedNumbers);
-        return selectedNumbers;
-    }
 }
