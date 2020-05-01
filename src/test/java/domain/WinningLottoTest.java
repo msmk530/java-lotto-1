@@ -17,7 +17,7 @@ class WinningLottoTest {
     void setUp() {
         List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);
 
-        winningNumbersLotto = new WinningLottoGenerator().generateLotto(numbers);
+        winningNumbersLotto = LottoGenerator.generateLotto(numbers);
         bonus = 7;
         winningLotto = new WinningLotto(winningNumbersLotto, bonus);
     }
