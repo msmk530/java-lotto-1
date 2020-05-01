@@ -11,30 +11,15 @@ import static view.OutputView.printErrorMessage;
 
 public class ManualLottoGenerator implements LottoGenerator {
     @Override
-    public Lotto generateLotto() {
-        try {
-            List<Integer> lottoNumbers = selectNumbers();
-            Collections.sort(lottoNumbers);
-            return new Lotto(lottoNumbers);
-        } catch (Exception e) {
-            printErrorMessage(e.getMessage());
-            return generateLotto();
-        }
+    public Lotto generateLotto(List<Integer> lottoNumbers) {
+        List<Integer> selectedNumbers = validateLottoNumbers(lottoNumbers);
+
+        Collections.sort(selectedNumbers);
+        return new Lotto(selectedNumbers);
     }
 
-    private List<Integer> selectNumbers(){
-        List<Integer> lottoNumbers;
-
-        try {
-            String selectedNumbers = InputView.inputManualNumber();
-            Validator.isValidNumbers(selectedNumbers);
-            lottoNumbers = ChangeStringToIntList.change(selectedNumbers);
-        } catch (Exception e) {
-            printErrorMessage(e.getMessage());
-            return selectNumbers();
-        }
-
-        return lottoNumbers;
+    private List<Integer> validateLottoNumbers(List<Integer> selectedNumbers) {
+        Validator.isValidNumbers(selectedNumbers);
+        return selectedNumbers;
     }
-
 }

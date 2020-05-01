@@ -55,8 +55,8 @@ public class InputView {
         return countOfManualLotto;
     }
 
-    public static String inputManualNumber() {
-        printMessage(DEMAND_MANUAL_NUMBERS);
+    public static String inputManualNumber(int countOfFinishedLotto) {
+        printMessage(DEMAND_MANUAL_NUMBERS + countOfFinishedLotto);
         return scanner.next();
     }
 

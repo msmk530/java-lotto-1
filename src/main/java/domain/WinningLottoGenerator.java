@@ -10,24 +10,15 @@ import static view.OutputView.printErrorMessage;
 
 public class WinningLottoGenerator implements LottoGenerator{
     @Override
-    public Lotto generateLotto() {
-        List<Integer> lottoNumbers = makeNumbers();
-        Collections.sort(lottoNumbers);
-        return new Lotto(lottoNumbers);
+    public Lotto generateLotto(List<Integer> lottoNumbers) {
+        List<Integer> selectedNumbers = validateLottoNumbers(lottoNumbers);
+
+        Collections.sort(selectedNumbers);
+        return new Lotto(selectedNumbers);
     }
 
-    private List<Integer> makeNumbers(){
-        List<Integer> lottoNumbers;
-
-        try {
-            String selectedNumbers = InputView.inputWinningLottoNumbers();
-            Validator.isValidNumbers(selectedNumbers);
-            lottoNumbers = ChangeStringToIntList.change(selectedNumbers);
-        } catch (Exception e) {
-            printErrorMessage(e.getMessage());
-            return makeNumbers();
-        }
-
-        return lottoNumbers;
+    private List<Integer> validateLottoNumbers(List<Integer> selectedNumbers) {
+        Validator.isValidNumbers(selectedNumbers);
+        return selectedNumbers;
     }
 }

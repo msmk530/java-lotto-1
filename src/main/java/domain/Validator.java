@@ -46,14 +46,12 @@ public class Validator {
         }
     }
 
-    public static void isValidNumbers(String numbers) {
-        List<String> selectedNumbers = Arrays.asList(numbers.split(","));
-
+    public static void isValidNumbers(List<Integer> selectedNumbers) {
         if (selectedNumbers.size() != 6) {
             throw new CountOfSelectNumberException(SELECTED_NUMBER_COUNT_ERROR_MEESAGE);
         }
 
-        Set<String> checkDuplicate = new HashSet<>();
+        Set<Integer> checkDuplicate = new HashSet<>();
 
         for (int i = 0; i < selectedNumbers.size(); i++) {
             checkDuplicate.add(selectedNumbers.get(i));
@@ -64,8 +62,8 @@ public class Validator {
         }
 
         for (int i = 0; i < selectedNumbers.size(); i++) {
-            if (Integer.parseInt(selectedNumbers.get(i)) < MINIMUM_LOTTO_NUMBER
-                    || Integer.parseInt(selectedNumbers.get(i)) > MAXIMUM_LOTTO_NUMBER) {
+            if (selectedNumbers.get(i) < MINIMUM_LOTTO_NUMBER
+                    || selectedNumbers.get(i) > MAXIMUM_LOTTO_NUMBER) {
                 throw new LottoNumberOutOfRangeException(LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
             }
         }

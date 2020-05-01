@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,8 +16,9 @@ class AutomaticLottoGeneratorTest {
 
     @BeforeEach
     void setUp() {
+        List<Integer> numbers = Arrays.asList(6,5,4,3,2,1);
         LottoGenerator generator = new AutomaticLottoGenerator();
-        automaticLotto = generator.generateLotto();
+        automaticLotto = generator.generateLotto(numbers);
     }
 
     @Test

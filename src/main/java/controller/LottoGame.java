@@ -9,22 +9,18 @@ import java.util.List;
 
 public class LottoGame {
     public void run() {
-        /*
-        LottoFactory lottoFactory = new LottoFactory();
-*/
-
         int countOfPurchaseLotto = InputView.inputPurchasePrice();
         int countOfManualLotto = InputView.inputCountOfManualLotto(countOfPurchaseLotto);
         int countOfAutomaticLotto = countOfPurchaseLotto - countOfManualLotto;
 
         List<Lotto> allLotto = new ArrayList<>();
 
-        allLotto.addAll(LottoMachine.createManualLotto(new ManualLottoGenerator(), countOfManualLotto));
-        allLotto.addAll(LottoMachine.createAutomaticLotto(new AutomaticLottoGenerator(), countOfAutomaticLotto));
+        allLotto.addAll(LottoMachine.createManualLotto(countOfManualLotto));
+        allLotto.addAll(LottoMachine.createAutomaticLotto(countOfAutomaticLotto));
 
         OutputView.printAllLotto(allLotto, countOfManualLotto, countOfAutomaticLotto);
 
-        WinningLotto winningLotto = LottoMachine.createWinningLotto(new WinningLottoGenerator());
+        WinningLotto winningLotto = LottoMachine.createWinningLotto();
         GameResult gameResult = new GameResult(countOfPurchaseLotto, allLotto, winningLotto);
         OutputView.printResult(gameResult);
     }
