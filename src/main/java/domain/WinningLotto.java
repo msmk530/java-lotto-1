@@ -9,7 +9,7 @@ public class WinningLotto {
     private final int bonus;
 
     public WinningLotto(Lotto lotto, int bonus) {
-        validateBonusNumber(bonus,lotto.getNumbers());
+        validateBonusNumber(bonus, lotto.getNumbers());
         this.lotto = lotto;
         this.bonus = bonus;
     }
@@ -21,8 +21,8 @@ public class WinningLotto {
         return Rank.valueOf(countOfMatch, matchBonus);
     }
 
-    private void validateBonusNumber(int bonus, List<Integer> numbers){
-        Validator.isValidBonusNumber(bonus,numbers);
+    private void validateBonusNumber(int bonus, List<Integer> numbers) {
+        Validator.isValidBonusNumber(bonus, numbers);
     }
 
     public Lotto getLotto() {

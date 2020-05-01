@@ -51,19 +51,15 @@ public class Validator {
             throw new CountOfSelectNumberException(SELECTED_NUMBER_COUNT_ERROR_MEESAGE);
         }
 
-        Set<Integer> checkDuplicate = new HashSet<>();
-
-        for (int i = 0; i < selectedNumbers.size(); i++) {
-            checkDuplicate.add(selectedNumbers.get(i));
-        }
+        Set<Integer> checkDuplicate = new HashSet<>(selectedNumbers);
 
         if (selectedNumbers.size() != checkDuplicate.size()) {
             throw new SelectedNumbersDuplicateException(SELECTED_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
 
-        for (int i = 0; i < selectedNumbers.size(); i++) {
-            if (selectedNumbers.get(i) < MINIMUM_LOTTO_NUMBER
-                    || selectedNumbers.get(i) > MAXIMUM_LOTTO_NUMBER) {
+        for (Integer selectedNumber : selectedNumbers) {
+            if (selectedNumber < MINIMUM_LOTTO_NUMBER
+                    || selectedNumber > MAXIMUM_LOTTO_NUMBER) {
                 throw new LottoNumberOutOfRangeException(LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
             }
         }

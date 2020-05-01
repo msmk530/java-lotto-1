@@ -8,7 +8,7 @@ import java.util.List;
 
 import static view.OutputView.printErrorMessage;
 
-public class WinningLottoGenerator implements LottoGenerator{
+public class WinningLottoGenerator implements LottoGenerator {
     @Override
     public Lotto generateLotto(List<Integer> lottoNumbers) {
         List<Integer> selectedNumbers = validateLottoNumbers(lottoNumbers);
@@ -21,4 +21,5 @@ public class WinningLottoGenerator implements LottoGenerator{
         Validator.isValidNumbers(selectedNumbers);
         return selectedNumbers;
     }
+
 }

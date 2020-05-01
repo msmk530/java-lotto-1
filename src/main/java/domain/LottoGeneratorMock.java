@@ -3,7 +3,7 @@ package domain;
 import java.util.Arrays;
 import java.util.List;
 
-public class LottoGeneratorMock implements LottoGenerator{
+public class LottoGeneratorMock implements LottoGenerator {
     private static final int bonusNumber = 7;
 
     @Override
