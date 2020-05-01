@@ -36,9 +36,7 @@ public class LottoMachine {
 
     public static WinningLotto createWinningLotto() {
         Lotto winningNumberLotto = selectWinningNumbers();
-        WinningLotto winningLotto = addBonusNumber(winningNumberLotto);
-
-        return winningLotto;
+        return addBonusNumber(winningNumberLotto);
     }
 
     private static Lotto selectManualNumbers(int countOfFinishedLotto) {

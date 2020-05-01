@@ -16,7 +16,7 @@ public class Lotto {
                 .count();
     }
 
-    boolean containNumber(int number) {
+    public boolean containNumber(int number) {
         return numbers.contains(number);
     }
 

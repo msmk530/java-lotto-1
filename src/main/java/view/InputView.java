@@ -1,13 +1,7 @@
 package view;
 
-import domain.Lotto;
 import domain.Validator;
-import domain.WinningLotto;
-import util.ChangeStringToIntList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import static view.OutputView.printErrorMessage;

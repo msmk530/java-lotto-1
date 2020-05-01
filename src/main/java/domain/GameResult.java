@@ -7,15 +7,14 @@ import java.util.Map;
 public class GameResult {
     private static int countOfPurchaseLotto;
     private static Map<Rank, Integer> result;
-    private static Rank rank;
 
     public GameResult(int countOfPurchaseLotto, List<Lotto> allLotto, WinningLotto winningLotto) {
-        this.countOfPurchaseLotto = countOfPurchaseLotto;
+        GameResult.countOfPurchaseLotto = countOfPurchaseLotto;
 
         result = initResult();
 
-        for (int i = 0; i < allLotto.size(); i++) {
-            rank = winningLotto.match(allLotto.get(i));
+        for (Lotto lotto : allLotto) {
+            Rank rank = winningLotto.match(lotto);
             result.put(rank, result.get(rank) + 1);
         }
     }

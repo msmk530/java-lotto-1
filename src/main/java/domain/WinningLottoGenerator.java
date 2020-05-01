@@ -1,12 +1,7 @@
 package domain;
 
-import util.ChangeStringToIntList;
-import view.InputView;
-
 import java.util.Collections;
 import java.util.List;
-
-import static view.OutputView.printErrorMessage;
 
 public class WinningLottoGenerator implements LottoGenerator {
     @Override
@@ -21,5 +16,4 @@ public class WinningLottoGenerator implements LottoGenerator {
         Validator.isValidNumbers(selectedNumbers);
         return selectedNumbers;
     }
-
 }

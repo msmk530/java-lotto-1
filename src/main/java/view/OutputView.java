@@ -40,7 +40,7 @@ public class OutputView {
 
     private static void printGameResult(Map<Rank, Integer> result) {
         for (int i = Rank.values().length - 1; i >= 0; i--) {
-            Rank.values()[i].printMessage(result.get(Rank.values()[i]));
+            Rank.values()[i].resultMessage(result.get(Rank.values()[i]));
         }
     }
 

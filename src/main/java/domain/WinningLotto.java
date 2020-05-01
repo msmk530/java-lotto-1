@@ -2,8 +2,6 @@ package domain;
 
 import java.util.List;
 
-import static view.OutputView.printErrorMessage;
-
 public class WinningLotto {
     private final Lotto lotto;
     private final int bonus;

@@ -1,13 +1,7 @@
 package domain;
 
-import util.ChangeStringToIntList;
-import view.InputView;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static view.OutputView.printErrorMessage;
 
 public class ManualLottoGenerator implements LottoGenerator {
     @Override
