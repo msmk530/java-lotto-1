@@ -45,7 +45,7 @@ public class LottoMachine {
         try {
             String selectNumbers = InputView.inputManualNumber(countOfFinishedLotto);
             lottoNumbers = ChangeStringToIntList.change(selectNumbers);
-            return new ManualLottoGenerator().generateLotto(lottoNumbers);
+            return LottoGenerator.generateLotto(lottoNumbers);
         } catch (Exception e) {
             printErrorMessage(e.getMessage());
             return selectManualNumbers(countOfFinishedLotto);
@@ -62,7 +62,7 @@ public class LottoMachine {
             }
         }
 
-        return new AutomaticLottoGenerator().generateLotto(lottoNumbers);
+        return LottoGenerator.generateLotto(lottoNumbers);
     }
 
     private static Lotto selectWinningNumbers() {
@@ -71,7 +71,7 @@ public class LottoMachine {
         try {
             String selectNumbers = InputView.inputWinningLottoNumbers();
             lottoNumbers = ChangeStringToIntList.change(selectNumbers);
-            return new WinningLottoGenerator().generateLotto(lottoNumbers);
+            return LottoGenerator.generateLotto(lottoNumbers);
         } catch (Exception e) {
             printErrorMessage(e.getMessage());
             return selectWinningNumbers();
