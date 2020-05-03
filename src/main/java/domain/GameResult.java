@@ -8,12 +8,12 @@ public class GameResult {
     private static int countOfPurchaseLotto;
     private static Map<Rank, Integer> result;
 
-    public GameResult(int countOfPurchaseLotto, List<Lotto> allLotto, WinningLotto winningLotto) {
+    public GameResult(int countOfPurchaseLotto, AllLotto allLotto, WinningLotto winningLotto) {
         GameResult.countOfPurchaseLotto = countOfPurchaseLotto;
 
         result = initResult();
 
-        for (Lotto lotto : allLotto) {
+        for (Lotto lotto : allLotto.getAllLotto()) {
             Rank rank = winningLotto.match(lotto);
             result.put(rank, result.get(rank) + 1);
         }

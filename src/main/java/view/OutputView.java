@@ -1,5 +1,6 @@
 package view;
 
+import domain.AllLotto;
 import domain.GameResult;
 import domain.Lotto;
 import domain.Rank;
@@ -25,9 +26,9 @@ public class OutputView {
         System.err.println(message);
     }
 
-    public static void printAllLotto(List<Lotto> allLotto, int countOfManualLotto, int countOfAutomaticLotto) {
+    public static void printAllLotto(AllLotto allLotto, int countOfManualLotto, int countOfAutomaticLotto) {
         System.out.printf("수동으로 %d장 , 자동으로 %d장을 구매하셨습니다.\n", countOfManualLotto, countOfAutomaticLotto);
-        for (Lotto lotto : allLotto) {
+        for (Lotto lotto : allLotto.getAllLotto()) {
             System.out.println(lotto.getNumbers().toString());
         }
     }

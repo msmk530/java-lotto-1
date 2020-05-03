@@ -9,14 +9,11 @@ import java.util.List;
 
 public class LottoGame {
     public void run() {
-        int countOfPurchaseLotto = InputView.inputPurchasePrice();
-        int countOfManualLotto = InputView.inputCountOfManualLotto(countOfPurchaseLotto);
-        int countOfAutomaticLotto = countOfPurchaseLotto - countOfManualLotto;
+        final int countOfPurchaseLotto = InputView.inputPurchasePrice();
+        final int countOfManualLotto = InputView.inputCountOfManualLotto(countOfPurchaseLotto);
+        final int countOfAutomaticLotto = countOfPurchaseLotto - countOfManualLotto;
 
-        List<Lotto> allLotto = new ArrayList<>();
-
-        allLotto.addAll(LottoMachine.createManualLotto(countOfManualLotto));
-        allLotto.addAll(LottoMachine.createAutomaticLotto(countOfAutomaticLotto));
+        AllLotto allLotto = new AllLotto(countOfManualLotto,countOfAutomaticLotto);
 
         OutputView.printAllLotto(allLotto, countOfManualLotto, countOfAutomaticLotto);
 
