@@ -15,7 +15,7 @@ class GameResultTest {
     @BeforeEach
     void setUp() {
         int countOfPurchaseLotto = 5;
-        List<Lotto> allLotto = new ArrayList<>();
+        AllLotto allLotto = new AllLotto(5,0);
         WinningLotto winningLotto;
 
         allLotto.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)));

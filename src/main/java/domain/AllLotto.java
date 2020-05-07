@@ -4,22 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllLotto {
-    private List<Lotto> allLotto = new ArrayList<>();
+    private static List<Lotto> allLotto = new ArrayList<>();
 
-    public AllLotto(int countOfManualLotto, int countOfAutomaticLotto){
-        addManualLotto(countOfManualLotto);
-        addAutomaticLotto(countOfAutomaticLotto);
+    private AllLotto() {
+        throw new AssertionError();
     }
 
-    private void addManualLotto(int countOfManualLotto){
-        allLotto.addAll(LottoMachine.createManualLotto(countOfManualLotto));
+    public static void addLotto(Lotto lotto) {
+        allLotto.add(lotto);
     }
 
-    private void addAutomaticLotto(int countOfAutomaticLotto){
-        allLotto.addAll(LottoMachine.createAutomaticLotto(countOfAutomaticLotto));
+    public static boolean isCheckLottoCount(int countOfLotto) {
+        return allLotto.size() == countOfLotto;
     }
 
-    public List<Lotto> getAllLotto(){
+    public static List<Lotto> getAllLotto() {
         return allLotto;
     }
 

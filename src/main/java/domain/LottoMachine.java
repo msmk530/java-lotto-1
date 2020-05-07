@@ -2,7 +2,6 @@ package domain;
 
 import util.ChangeStringToIntList;
 import util.RandomNumberGenerator;
-import view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,43 +15,29 @@ public class LottoMachine {
         throw new AssertionError();
     }
 
-    public static List<Lotto> createManualLotto(int countOfManualLotto) {
-        List<Lotto> manualLottoes = new ArrayList<>();
-        for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfManualLotto; countOfFinishedLotto++) {
-            manualLottoes.add(selectManualNumbers(countOfFinishedLotto));
-        }
-        return manualLottoes;
-    }
-
-    public static List<Lotto> createAutomaticLotto(int countOfAutomaticLotto) {
-        List<Lotto> automaticLottoes = new ArrayList<>();
-
-        for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfAutomaticLotto; countOfFinishedLotto++) {
-            automaticLottoes.add(selectAutomaticNumbers());
-        }
-
-        return automaticLottoes;
-    }
-
-    public static WinningLotto createWinningLotto() {
-        Lotto winningNumberLotto = selectWinningNumbers();
-        return addBonusNumber(winningNumberLotto);
-    }
-
-    private static Lotto selectManualNumbers(int countOfFinishedLotto) {
+    public static Lotto createManualLotto(String selectNumbers) {
         List<Integer> lottoNumbers;
 
         try {
-            String selectNumbers = InputView.inputManualNumber(countOfFinishedLotto);
             lottoNumbers = ChangeStringToIntList.change(selectNumbers);
             return LottoGenerator.generateLotto(lottoNumbers);
         } catch (Exception e) {
             printErrorMessage(e.getMessage());
-            return selectManualNumbers(countOfFinishedLotto);
+            return null;
         }
     }
 
-    private static Lotto selectAutomaticNumbers() {
+    public static void completeAllLotto(int countOfAutomaticLotto) {
+        for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfAutomaticLotto; countOfFinishedLotto++) {
+            AllLotto.addLotto(createAutomaticLotto());
+        }
+    }
+
+    public static WinningLotto createWinningLotto(Lotto winningNumberLotto, int bonusNumber) {
+        return new WinningLotto(winningNumberLotto, bonusNumber);
+    }
+
+    private static Lotto createAutomaticLotto() {
         List<Integer> lottoNumbers = new ArrayList<>();
 
         while (lottoNumbers.size() != ONE_LOTTO_SIZE) {
@@ -61,30 +46,7 @@ public class LottoMachine {
                 lottoNumbers.add(randomNumber);
             }
         }
-
         return LottoGenerator.generateLotto(lottoNumbers);
     }
 
-    private static Lotto selectWinningNumbers() {
-        List<Integer> lottoNumbers;
-
-        try {
-            String selectNumbers = InputView.inputWinningLottoNumbers();
-            lottoNumbers = ChangeStringToIntList.change(selectNumbers);
-            return LottoGenerator.generateLotto(lottoNumbers);
-        } catch (Exception e) {
-            printErrorMessage(e.getMessage());
-            return selectWinningNumbers();
-        }
-    }
-
-    private static WinningLotto addBonusNumber(Lotto winningNumberLotto) {
-        try {
-            int bonus = InputView.inputBonus();
-            return new WinningLotto(winningNumberLotto, bonus);
-        } catch (Exception e) {
-            printErrorMessage(e.getMessage());
-            return addBonusNumber(winningNumberLotto);
-        }
-    }
 }

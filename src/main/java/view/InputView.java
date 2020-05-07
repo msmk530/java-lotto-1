@@ -2,6 +2,7 @@ package view;
 
 import domain.Validator;
 
+import java.util.List;
 import java.util.Scanner;
 
 import static view.OutputView.printErrorMessage;
@@ -63,4 +64,6 @@ public class InputView {
         printMessage(DEMAND_BONUS_NUMBER);
         return scanner.nextInt();
     }
+
+
 }

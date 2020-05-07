@@ -7,7 +7,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateLottoNumbers(numbers);
+        Validator.isValidNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -15,10 +15,6 @@ public class Lotto {
         return (int) numbers.stream()
                 .filter(winningLotto::containNumber)
                 .count();
-    }
-
-    private void validateLottoNumbers(List<Integer> numbers) {
-        Validator.isValidNumbers(numbers);
     }
 
     public boolean containNumber(int number) {
