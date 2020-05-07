@@ -27,9 +27,9 @@ public class LottoMachine {
         }
     }
 
-    public static void completeAllLotto(int countOfAutomaticLotto) {
+    public static void completeAllLotto(LottoRepository lottoRepository, int countOfAutomaticLotto) {
         for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfAutomaticLotto; countOfFinishedLotto++) {
-            AllLotto.addLotto(createAutomaticLotto());
+            lottoRepository.addLotto(createAutomaticLotto());
         }
     }
 

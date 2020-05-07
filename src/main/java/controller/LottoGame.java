@@ -4,40 +4,38 @@ import domain.*;
 import view.InputView;
 import view.OutputView;
 
-import java.util.List;
-
 import static view.OutputView.printErrorMessage;
-import static view.OutputView.printMessage;
 
 public class LottoGame {
     public void run() {
         final int countOfPurchaseLotto = InputView.inputPurchasePrice();
         final int countOfManualLotto = InputView.inputCountOfManualLotto(countOfPurchaseLotto);
         final int countOfAutomaticLotto = countOfPurchaseLotto - countOfManualLotto;
+        LottoRepository lottoRepository = new LottoRepository();
 
-        inputManualLotto(countOfManualLotto);
-        LottoMachine.completeAllLotto(countOfAutomaticLotto);
+        inputManualLotto(lottoRepository, countOfManualLotto);
+        LottoMachine.completeAllLotto(lottoRepository, countOfAutomaticLotto);
 
-        OutputView.printAllLotto(countOfManualLotto, countOfAutomaticLotto);
+        OutputView.printAllLotto(lottoRepository, countOfManualLotto, countOfAutomaticLotto);
 
         Lotto winningNumberLotto = inputWinningNumber();
         WinningLotto winningLotto = inputBonusNumber(winningNumberLotto);
 
-        GameResult gameResult = new GameResult(countOfPurchaseLotto, winningLotto);
+        GameResult gameResult = new GameResult(lottoRepository, countOfPurchaseLotto, winningLotto);
         OutputView.printResult(gameResult);
     }
 
-    private static void inputManualLotto(int countOfManualLotto) {
+    private static void inputManualLotto(LottoRepository lottoRepository, int countOfManualLotto) {
         int countOfFinishedLotto = 0;
 
         do {
             String numbers = InputView.inputManualNumber(countOfFinishedLotto);
 
             if (LottoMachine.createManualLotto(numbers) != null) {
-                AllLotto.addLotto(LottoMachine.createManualLotto(numbers));
+                lottoRepository.addLotto(LottoMachine.createManualLotto(numbers));
                 countOfFinishedLotto++;
             }
-        } while (!AllLotto.isCheckLottoCount(countOfManualLotto));
+        } while (!lottoRepository.isCheckLottoCount(countOfManualLotto));
     }
 
     private static Lotto inputWinningNumber() {

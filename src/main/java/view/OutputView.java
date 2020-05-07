@@ -1,11 +1,10 @@
 package view;
 
-import domain.AllLotto;
+import domain.LottoRepository;
 import domain.GameResult;
 import domain.Lotto;
 import domain.Rank;
 
-import java.util.List;
 import java.util.Map;
 
 public class OutputView {
@@ -26,9 +25,9 @@ public class OutputView {
         System.err.println(message);
     }
 
-    public static void printAllLotto(int countOfManualLotto, int countOfAutomaticLotto) {
+    public static void printAllLotto(LottoRepository lottoRepository, int countOfManualLotto, int countOfAutomaticLotto) {
         System.out.printf("수동으로 %d장 , 자동으로 %d장을 구매하셨습니다.\n", countOfManualLotto, countOfAutomaticLotto);
-        for (Lotto lotto : AllLotto.getAllLotto()) {
+        for (Lotto lotto : lottoRepository.getAllLotto()) {
             System.out.println(lotto.getNumbers().toString());
         }
     }

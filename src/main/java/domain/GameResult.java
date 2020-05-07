@@ -1,19 +1,18 @@
 package domain;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class GameResult {
-    private static int countOfPurchaseLotto;
-    private static Map<Rank, Integer> result;
+    private final int countOfPurchaseLotto;
+    private final Map<Rank, Integer> result;
 
-    public GameResult(int countOfPurchaseLotto, WinningLotto winningLotto) {
-        GameResult.countOfPurchaseLotto = countOfPurchaseLotto;
+    public GameResult(LottoRepository lottoRepository, int countOfPurchaseLotto, WinningLotto winningLotto) {
+        this.countOfPurchaseLotto = countOfPurchaseLotto;
 
         result = initResult();
 
-        for (Lotto lotto : AllLotto.getAllLotto()) {
+        for (Lotto lotto : lottoRepository.getAllLotto()) {
             Rank rank = winningLotto.match(lotto);
             result.put(rank, result.get(rank) + 1);
         }
@@ -28,11 +27,11 @@ public class GameResult {
         return result;
     }
 
-    public static Map<Rank, Integer> getResult() {
+    public Map<Rank, Integer> getResult() {
         return result;
     }
 
-    public static int getCountOfPurchaseLotto() {
+    public int getCountOfPurchaseLotto() {
         return countOfPurchaseLotto;
     }
 }

@@ -14,7 +14,19 @@ class GameResultTest {
 
     @BeforeEach
     void setUp() {
+        int countOfPurchaseLotto = 5;
+        LottoRepository lottoRepository = new LottoRepository();
+        WinningLotto winningLotto;
 
+        lottoRepository.addLotto(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)));
+        lottoRepository.addLotto(new Lotto(Arrays.asList(2, 3, 4, 5, 6, 7)));
+        lottoRepository.addLotto(new Lotto(Arrays.asList(3, 4, 5, 6, 7, 8)));
+        lottoRepository.addLotto(new Lotto(Arrays.asList(4, 5, 6, 7, 8, 9)));
+        lottoRepository.addLotto(new Lotto(Arrays.asList(5, 6, 7, 8, 9, 10)));
+
+        winningLotto = new WinningLotto(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)), 7);
+
+        result = new GameResult(lottoRepository, countOfPurchaseLotto, winningLotto);
     }
 
     @Test
@@ -24,6 +36,12 @@ class GameResultTest {
 
     @Test
     void 올바른_결과_생성_테스트() {
+        assertThat(result.getResult().get(Rank.values()[0])).isEqualTo(1);
+        assertThat(result.getResult().get(Rank.values()[1])).isEqualTo(1);
+        assertThat(result.getResult().get(Rank.values()[2])).isEqualTo(0);
+        assertThat(result.getResult().get(Rank.values()[3])).isEqualTo(1);
+        assertThat(result.getResult().get(Rank.values()[4])).isEqualTo(1);
+        assertThat(result.getResult().get(Rank.values()[5])).isEqualTo(1);
 
     }
 }
