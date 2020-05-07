@@ -14,19 +14,7 @@ class GameResultTest {
 
     @BeforeEach
     void setUp() {
-        int countOfPurchaseLotto = 5;
-        AllLotto allLotto = new AllLotto(5,0);
-        WinningLotto winningLotto;
 
-        allLotto.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)));
-        allLotto.add(new Lotto(Arrays.asList(2, 3, 4, 5, 6, 7)));
-        allLotto.add(new Lotto(Arrays.asList(3, 4, 5, 6, 7, 8)));
-        allLotto.add(new Lotto(Arrays.asList(4, 5, 6, 7, 8, 9)));
-        allLotto.add(new Lotto(Arrays.asList(5, 6, 7, 8, 9, 10)));
-
-        winningLotto = new WinningLotto(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)), 7);
-
-        result = new GameResult(countOfPurchaseLotto, allLotto, winningLotto);
     }
 
     @Test
@@ -36,12 +24,6 @@ class GameResultTest {
 
     @Test
     void 올바른_결과_생성_테스트() {
-        assertThat(result.getResult().get(Rank.values()[0])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[1])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[2])).isEqualTo(0);
-        assertThat(result.getResult().get(Rank.values()[3])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[4])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[5])).isEqualTo(1);
 
     }
 }

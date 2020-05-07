@@ -9,25 +9,29 @@ import exception.WinningLotto.BonusNumberRangeException;
 import java.util.*;
 
 public class Validator {
+    private static final int MINIMUM_PURCHASE_PRICE = 1000;
+    private static final int MINIMUM_MANUAL_LOTTO_COUNT = 0;
+    private static final int ONE_LOTTO_SIZE = 6;
     private static final int MINIMUM_LOTTO_NUMBER = 1;
     private static final int MAXIMUM_LOTTO_NUMBER = 45;
+
 
     private Validator() {
         throw new AssertionError();
     }
 
     public static void isCorrectPurchasePrice(int purchasePrice) {
-        if (purchasePrice < 1000) {
+        if (purchasePrice < MINIMUM_PURCHASE_PRICE) {
             throw new MinimumPurchasePriceException();
         }
 
-        if (purchasePrice % 1000 != 0) {
+        if (purchasePrice % MINIMUM_PURCHASE_PRICE != 0) {
             throw new PurchasePriceUnitException();
         }
     }
 
     public static void isCorrectCountOfManualLotto(int countOfPurchaseLotto, int countOfManualLotto) {
-        if (countOfManualLotto < 0) {
+        if (countOfManualLotto < MINIMUM_MANUAL_LOTTO_COUNT) {
             throw new MinimumCountOfManualLottoException();
         }
 
@@ -37,7 +41,7 @@ public class Validator {
     }
 
     public static void isValidNumbers(List<Integer> selectedNumbers) {
-        if (selectedNumbers.size() != 6) {
+        if (selectedNumbers.size() != ONE_LOTTO_SIZE) {
             throw new CountOfSelectNumberException();
         }
 
