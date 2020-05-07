@@ -15,7 +15,7 @@ class WinningLottoTest {
 
     @BeforeEach
     void setUp() {
-        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 
         winningNumbersLotto = LottoGenerator.generateLotto(numbers);
         bonus = 7;
@@ -24,8 +24,7 @@ class WinningLottoTest {
 
     @Test
     void 생성자_테스트() {
-        assertThat(winningLotto.getLotto().getNumbers()).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6));
-        assertThat(winningLotto.getBonus()).isEqualTo(7);
+        assertThat(winningLotto.compareLotto(Arrays.asList(1, 2, 3, 4, 5, 6),7)).isTrue();
     }
 
     @Test

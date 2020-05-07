@@ -20,12 +20,7 @@ public class WinningLotto {
         return Rank.valueOf(countOfMatch, matchBonus);
     }
 
-    public Lotto getLotto() {
-        return lotto;
+    public boolean compareLotto(List<Integer> numbers, int number) {
+        return lotto.getNumbers().containsAll(numbers) && bonus == number;
     }
-
-    public int getBonus() {
-        return bonus;
-    }
-
 }
