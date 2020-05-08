@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoRepository {
@@ -15,6 +16,6 @@ public class LottoRepository {
     }
 
     public List<Lotto> getAllLotto() {
-        return allLotto;
+        return Collections.unmodifiableList(allLotto);
     }
 }
