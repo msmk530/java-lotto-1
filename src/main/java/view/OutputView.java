@@ -39,8 +39,8 @@ public class OutputView {
     }
 
     private static void printGameResult(Map<Rank, Integer> result) {
-        for (int i = Rank.values().length - 1; i >= 0; i--) {
-            Rank.values()[i].resultMessage(result.get(Rank.values()[i]));
+        for (int i = Rank.values().length - 2; i >= 0; i--) {
+            System.out.println(Rank.values()[i].getMessage(result.get(Rank.values()[i])));
         }
     }
 

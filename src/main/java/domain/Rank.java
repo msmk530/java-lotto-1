@@ -1,7 +1,5 @@
 package domain;
 
-import static view.OutputView.printMessage;
-
 public enum Rank {
     FIRST(6, 2_000_000_000, "6개 일치(2000000000원) - "), // 1등
     SECOND(5, 30_000_000, "5개 일치, 보너스볼 일치(30000000원) - "), // 2등
@@ -40,10 +38,8 @@ public enum Rank {
         throw new IllegalArgumentException(countOfMatch + "는 유효하지 않은 값입니다.");
     }
 
-    public void resultMessage(int count) {
-        if (!this.equals(MISS)) {
-            printMessage(message + count + "개");
-        }
+    public String getMessage(int count) {
+        return message + count + "개";
     }
 
     private boolean matchCount(int countOfMatch) {

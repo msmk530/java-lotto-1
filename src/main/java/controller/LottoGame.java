@@ -1,6 +1,7 @@
 package controller;
 
 import domain.*;
+
 import view.InputView;
 import view.OutputView;
 
@@ -29,23 +30,27 @@ public class LottoGame {
         int countOfFinishedLotto = 0;
 
         do {
-            String numbers = InputView.inputManualNumber(countOfFinishedLotto);
+            try {
+                String numbers = InputView.inputManualNumber(countOfFinishedLotto);
 
-            if (LottoMachine.createManualLotto(numbers) != null) {
+                LottoMachine.createManualLotto(numbers);
                 lottoRepository.addLotto(LottoMachine.createManualLotto(numbers));
                 countOfFinishedLotto++;
+            } catch (Exception e) {
+                printErrorMessage(e.getMessage());
             }
         } while (!lottoRepository.isCheckLottoCount(countOfManualLotto));
     }
 
     private Lotto inputWinningNumber() {
-        String numbers;
+        try {
+            String numbers = InputView.inputWinningLottoNumbers();
 
-        do {
-            numbers = InputView.inputWinningLottoNumbers();
-        } while (LottoMachine.createManualLotto(numbers) == null);
-
-        return LottoMachine.createManualLotto(numbers);
+            return LottoMachine.createManualLotto(numbers);
+        } catch (Exception e) {
+            printErrorMessage(e.getMessage());
+            return inputWinningNumber();
+        }
     }
 
     private WinningLotto inputBonusNumber(Lotto winnningNumberLotto) {

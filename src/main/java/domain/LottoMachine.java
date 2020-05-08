@@ -6,8 +6,6 @@ import util.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static view.OutputView.printErrorMessage;
-
 public class LottoMachine {
     private static final int ONE_LOTTO_SIZE = 6;
 
@@ -16,15 +14,9 @@ public class LottoMachine {
     }
 
     public static Lotto createManualLotto(String selectNumbers) {
-        List<Integer> lottoNumbers;
+        List<Integer> lottoNumbers = ChangeStringToIntList.change(selectNumbers);;
 
-        try {
-            lottoNumbers = ChangeStringToIntList.change(selectNumbers);
-            return LottoGenerator.generateLotto(lottoNumbers);
-        } catch (Exception e) {
-            printErrorMessage(e.getMessage());
-            return null;
-        }
+        return LottoGenerator.generateLotto(lottoNumbers);
     }
 
     public static void completeAllLotto(LottoRepository lottoRepository, int countOfAutomaticLotto) {

@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoRepository {
-    private List<Lotto> allLotto = new ArrayList<>();
+    private final List<Lotto> allLotto = new ArrayList<>();
 
     public void addLotto(Lotto lotto) {
         allLotto.add(lotto);
