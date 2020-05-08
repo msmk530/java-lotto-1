@@ -15,7 +15,6 @@ public class Validator {
     private static final int MINIMUM_LOTTO_NUMBER = 1;
     private static final int MAXIMUM_LOTTO_NUMBER = 45;
 
-
     private Validator() {
         throw new AssertionError();
     }

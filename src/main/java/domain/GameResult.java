@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class GameResult {
         }
     }
 
-    private static Map<Rank, Integer> initResult() {
+    private Map<Rank, Integer> initResult() {
         Map<Rank, Integer> result = new HashMap<>();
 
         for (Rank rank : Rank.values()) {
@@ -28,7 +29,7 @@ public class GameResult {
     }
 
     public Map<Rank, Integer> getResult() {
-        return result;
+        return Collections.unmodifiableMap(result);
     }
 
     public int getCountOfPurchaseLotto() {

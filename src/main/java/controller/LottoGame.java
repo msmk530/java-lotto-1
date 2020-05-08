@@ -25,7 +25,7 @@ public class LottoGame {
         OutputView.printResult(gameResult);
     }
 
-    private static void inputManualLotto(LottoRepository lottoRepository, int countOfManualLotto) {
+    private void inputManualLotto(LottoRepository lottoRepository, int countOfManualLotto) {
         int countOfFinishedLotto = 0;
 
         do {
@@ -38,7 +38,7 @@ public class LottoGame {
         } while (!lottoRepository.isCheckLottoCount(countOfManualLotto));
     }
 
-    private static Lotto inputWinningNumber() {
+    private Lotto inputWinningNumber() {
         String numbers;
 
         do {
@@ -48,7 +48,7 @@ public class LottoGame {
         return LottoMachine.createManualLotto(numbers);
     }
 
-    private static WinningLotto inputBonusNumber(Lotto winnningNumberLotto) {
+    private WinningLotto inputBonusNumber(Lotto winnningNumberLotto) {
         int bonus;
         WinningLotto winningLotto;
 

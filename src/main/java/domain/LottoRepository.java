@@ -17,5 +17,4 @@ public class LottoRepository {
     public List<Lotto> getAllLotto() {
         return allLotto;
     }
-
 }

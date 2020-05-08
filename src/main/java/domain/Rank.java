@@ -10,8 +10,8 @@ public enum Rank {
     FIFTH(3, 5_000, "3개 일치(5000원) - "), // 5등
     MISS(0, 0, "");
 
-
     private static final int MINIMUM_COUNT_FOR_WINNING = 3;
+
     private final int countOfMatch;
     private final int winningMoney;
     private final String message;
