@@ -27,12 +27,11 @@ class RankTest {
 
     @Test
     void Rank_5등_확인_테스트() {
-        assertThat(Rank.valueOf(3,false)).isEqualTo(Rank.FIFTH);
+        assertThat(Rank.valueOf(3, false)).isEqualTo(Rank.FIFTH);
     }
 
     @Test
     void Rank_미당첨_확인_테스트() {
         assertThat(Rank.valueOf(2, false)).isEqualTo(Rank.MISS);
     }
-
 }

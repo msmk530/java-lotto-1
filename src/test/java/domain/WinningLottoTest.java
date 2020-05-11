@@ -24,12 +24,11 @@ class WinningLottoTest {
 
     @Test
     void 생성자_테스트() {
-        assertThat(winningLotto.compareLotto(Arrays.asList(1, 2, 3, 4, 5, 6),7)).isTrue();
+        assertThat(winningLotto.compareLotto(Arrays.asList(1, 2, 3, 4, 5, 6), 7)).isTrue();
     }
 
     @Test
     void 당첨번호와_매치_테스트() {
         assertThat(winningLotto.match(winningNumbersLotto)).isEqualTo(Rank.FIRST);
     }
-
 }

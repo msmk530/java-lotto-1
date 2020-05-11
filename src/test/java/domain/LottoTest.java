@@ -12,7 +12,7 @@ class LottoTest {
 
     @BeforeEach
     void setUp() {
-        lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
+        lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
     }
 
     @Test
@@ -22,7 +22,7 @@ class LottoTest {
 
     @Test
     void 당첨로또와_일치하는_개수_반환_테스트() {
-        Lotto winningNumberLotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
+        Lotto winningNumberLotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
         assertThat(lotto.countMatch(winningNumberLotto)).isEqualTo(6);
     }
 }

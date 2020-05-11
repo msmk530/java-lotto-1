@@ -66,5 +66,4 @@ public class LottoGame {
             return inputBonusNumber(winnningNumberLotto);
         }
     }
-
 }
