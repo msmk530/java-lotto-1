@@ -14,7 +14,7 @@ public class LottoMachine {
     }
 
     public static Lotto createManualLotto(String selectNumbers) {
-        List<Integer> lottoNumbers = ChangeStringToIntList.change(selectNumbers);;
+        List<Integer> lottoNumbers = ChangeStringToIntList.change(selectNumbers);
 
         return LottoGenerator.generateLotto(lottoNumbers);
     }
