@@ -33,7 +33,6 @@ public class LottoGame {
             try {
                 String numbers = InputView.inputManualNumber(countOfFinishedLotto);
 
-                LottoMachine.createManualLotto(numbers);
                 lottoRepository.addLotto(LottoMachine.createManualLotto(numbers));
                 countOfFinishedLotto++;
             } catch (Exception e) {

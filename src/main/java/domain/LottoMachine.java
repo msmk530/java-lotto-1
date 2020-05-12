@@ -5,6 +5,7 @@ import util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class LottoMachine {
     private static final int ONE_LOTTO_SIZE = 6;
@@ -20,9 +21,7 @@ public class LottoMachine {
     }
 
     public static void completeAllLotto(LottoRepository lottoRepository, int countOfAutomaticLotto) {
-        for (int countOfFinishedLotto = 0; countOfFinishedLotto < countOfAutomaticLotto; countOfFinishedLotto++) {
-            lottoRepository.addLotto(createAutomaticLotto());
-        }
+        IntStream.range(0,countOfAutomaticLotto).forEach(i->lottoRepository.addLotto(createAutomaticLotto()));
     }
 
     public static WinningLotto createWinningLotto(Lotto winningNumberLotto, int bonusNumber) {
