@@ -6,11 +6,12 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameResultTest {
-    GameResult result;
+    private GameResult result;
 
     @BeforeEach
     void setUp() {
@@ -36,11 +37,12 @@ class GameResultTest {
 
     @Test
     void 올바른_결과_생성_테스트() {
-        assertThat(result.getResult().get(Rank.values()[0])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[1])).isEqualTo(1);
+        IntStream.range(0,6).forEach(i -> {
+           if(i==2){
+               return;
+           }
+            assertThat(result.getResult().get(Rank.values()[i])).isEqualTo(1);
+        });
         assertThat(result.getResult().get(Rank.values()[2])).isEqualTo(0);
-        assertThat(result.getResult().get(Rank.values()[3])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[4])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[5])).isEqualTo(1);
     }
 }

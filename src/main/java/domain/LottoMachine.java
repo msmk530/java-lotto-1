@@ -1,7 +1,6 @@
 package domain;
 
 import util.ChangeStringToIntList;
-import util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
