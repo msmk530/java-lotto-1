@@ -37,10 +37,10 @@ class GameResultTest {
 
     @Test
     void 올바른_결과_생성_테스트() {
-        IntStream.range(0,6).forEach(i -> {
-           if(i==2){
-               return;
-           }
+        IntStream.range(0, 6).forEach(i -> {
+            if (i == 2) {
+                return;
+            }
             assertThat(result.getResult().get(Rank.values()[i])).isEqualTo(1);
         });
         assertThat(result.getResult().get(Rank.values()[2])).isEqualTo(0);
