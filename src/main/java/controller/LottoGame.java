@@ -55,8 +55,7 @@ public class LottoGame {
     private WinningLotto inputBonusNumber(Lotto winnningNumberLotto) {
         try {
             int bonus = InputView.inputBonus();
-            WinningLotto winningLotto = LottoMachine.createWinningLotto(winnningNumberLotto, bonus);
-            return winningLotto;
+            return LottoMachine.createWinningLotto(winnningNumberLotto, bonus);
         } catch (Exception e) {
             printErrorMessage(e.getMessage());
             return inputBonusNumber(winnningNumberLotto);
