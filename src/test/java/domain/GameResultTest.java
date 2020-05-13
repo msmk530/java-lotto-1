@@ -6,13 +6,14 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameResultTest {
     private GameResult result;
-
+    private Map<Rank, Integer> gameResult;
     @BeforeEach
     void setUp() {
         int countOfPurchaseLotto = 5;
@@ -28,6 +29,7 @@ class GameResultTest {
         winningLotto = new WinningLotto(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)), 7);
 
         result = new GameResult(lottoRepository, countOfPurchaseLotto, winningLotto);
+        gameResult = result.getResult();
     }
 
     @Test
@@ -37,12 +39,11 @@ class GameResultTest {
 
     @Test
     void 올바른_결과_생성_테스트() {
-        
-        assertThat(result.getResult().get(Rank.values()[0])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[1])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[2])).isEqualTo(0);
-        assertThat(result.getResult().get(Rank.values()[3])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[4])).isEqualTo(1);
-        assertThat(result.getResult().get(Rank.values()[5])).isEqualTo(1);
+        assertThat(gameResult.get(Rank.values()[0])).isEqualTo(1);
+        assertThat(gameResult.get(Rank.values()[1])).isEqualTo(1);
+        assertThat(gameResult.get(Rank.values()[2])).isEqualTo(0);
+        assertThat(gameResult.get(Rank.values()[3])).isEqualTo(1);
+        assertThat(gameResult.get(Rank.values()[4])).isEqualTo(1);
+        assertThat(gameResult.get(Rank.values()[5])).isEqualTo(1);
     }
 }
