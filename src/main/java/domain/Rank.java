@@ -9,6 +9,7 @@ public enum Rank {
     MISS(0, 0, "");
 
     private static final int MINIMUM_COUNT_FOR_WINNING = 3;
+    private static final int MINIMUM_MATCH_COUNT = 0;
 
     private final int countOfMatch;
     private final int winningMoney;
@@ -21,7 +22,7 @@ public enum Rank {
     }
 
     public static Rank valueOf(int countOfMatch, boolean matchBonus) {
-        if (countOfMatch < MINIMUM_COUNT_FOR_WINNING) {
+        if (countOfMatch < MINIMUM_COUNT_FOR_WINNING && countOfMatch >= MINIMUM_MATCH_COUNT) {
             return MISS;
         }
 
