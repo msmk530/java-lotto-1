@@ -24,7 +24,8 @@ class WinningLottoTest {
 
     @Test
     void 생성자_테스트() {
-        assertThat(winningLotto.compareLotto(Arrays.asList(1, 2, 3, 4, 5, 6), 7)).isTrue();
+        WinningLotto target = new WinningLotto(winningNumbersLotto,bonus);
+        assertThat(winningLotto.equals(winningLotto)).isTrue();
     }
 
     @Test
