@@ -25,4 +25,10 @@ class LottoTest {
         Lotto winningNumberLotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
         assertThat(lotto.countMatch(winningNumberLotto)).isEqualTo(6);
     }
+
+    @Test
+    void 숫자_포함_테스트() {
+        assertThat(lotto.containNumber(1)).isTrue();
+        assertThat(lotto.containNumber(7)).isFalse();
+    }
 }
