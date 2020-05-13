@@ -14,6 +14,6 @@ public class ChangeStringToIntList {
             changedNumbers.add(Integer.parseInt(targetNumbers.get(i)));
         }
 
-        return Collections.unmodifiableList(changedNumbers);
+        return changedNumbers;
     }
 }

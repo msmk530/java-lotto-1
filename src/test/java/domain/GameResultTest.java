@@ -42,6 +42,5 @@ class GameResultTest {
         assertThat(result.getResult().get(Rank.values()[3])).isEqualTo(1);
         assertThat(result.getResult().get(Rank.values()[4])).isEqualTo(1);
         assertThat(result.getResult().get(Rank.values()[5])).isEqualTo(1);
-
     }
 }
