@@ -20,7 +20,7 @@ public class LottoMachine {
     }
 
     public static void completeAllLotto(LottoRepository lottoRepository, int countOfAutomaticLotto) {
-        IntStream.range(0,countOfAutomaticLotto).forEach(i->lottoRepository.addLotto(createAutomaticLotto()));
+        IntStream.range(0, countOfAutomaticLotto).forEach(i -> lottoRepository.addLotto(createAutomaticLotto()));
     }
 
     public static WinningLotto createWinningLotto(Lotto winningNumberLotto, int bonusNumber) {

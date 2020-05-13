@@ -24,7 +24,7 @@ class WinningLottoTest {
 
     @Test
     void 생성자_테스트() {
-        WinningLotto target = new WinningLotto(winningNumbersLotto,bonus);
+        WinningLotto target = new WinningLotto(winningNumbersLotto, bonus);
         assertThat(winningLotto.equals(winningLotto)).isTrue();
     }
 
