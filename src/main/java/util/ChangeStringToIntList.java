@@ -6,11 +6,11 @@ import java.util.List;
 
 public class ChangeStringToIntList {
     public static List<Integer> change(String numbers) {
-        List<String> targetNumbers = Arrays.asList(numbers.split(","));
+        String[] targetNumbers = numbers.split(",");
         List<Integer> changedNumbers = new ArrayList<>();
 
-        for (int i = 0; i < targetNumbers.size(); i++) {
-            changedNumbers.add(Integer.parseInt(targetNumbers.get(i)));
+        for (String targetNumber : targetNumbers) {
+            changedNumbers.add(Integer.parseInt(targetNumber));
         }
 
         return changedNumbers;
